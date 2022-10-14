@@ -196,7 +196,7 @@ local config = {
       ["<C-k>"] = { "5k", desc = "5k" },
       ["<C-h>"] = { "5h", desc = "5h" },
       ["<C-l>"] = { "5l", desc = "5l" },
-      ['\\'] = { '"+', desc = "+ register" },
+      ["\\"] = { '"+', desc = "+ register" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
@@ -209,14 +209,14 @@ local config = {
       ["<C-k>"] = { "5k", desc = "5k" },
       ["<C-h>"] = { "5h", desc = "5h" },
       ["<C-l>"] = { "5l", desc = "5l" },
-      ['\\'] = { '"+', desc = "+ register" },
+      ["\\"] = { '"+', desc = "+ register" },
     },
     i = {
       ["<C-j>"] = { "<ESC>ja", desc = "move j in insert mode" },
       ["<C-k>"] = { "<ESC>ka", desc = "move k in insert mode" },
       ["<C-h>"] = { "<ESC>ha", desc = "move h in insert mode" },
       ["<C-l>"] = { "<ESC>la", desc = "move l in insert mode" },
-    }
+    },
   },
 
   -- Configure plugins
@@ -237,10 +237,8 @@ local config = {
       -- },
       ["kylechui/nvim-surround"] = {
         event = "BufRead",
-        config = function()
-          require("nvim-surround").setup({})
-        end,
-      }
+        config = function() require("nvim-surround").setup {} end,
+      },
       -- We also support a key value style plugin definition similar to NvChad:
       -- ["ray-x/lsp_signature.nvim"] = {
       --   event = "BufRead",
@@ -252,20 +250,22 @@ local config = {
     -- All other entries override the require("<key>").setup({...}) call for default plugins
     ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
       -- config variable is the default configuration table for the setup function call
-      -- local null_ls = require "null-ls"
+      local null_ls = require "null-ls"
 
       -- Check supported formatters and linters
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
       config.sources = {
         -- Set a formatter
-        -- null_ls.builtins.formatting.stylua,
-        -- null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.black,
+        null_ls.builtins.formatting.gofmt,
       }
       return config -- return final config table
     end,
     treesitter = { -- overrides `require("treesitter").setup(...)`
-      -- ensure_installed = { "lua" },
+      ensure_installed = { "lua" },
     },
     -- use mason-lspconfig to configure LSP installations
     ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
@@ -273,7 +273,7 @@ local config = {
     },
     -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
     ["mason-null-ls"] = { -- overrides `require("mason-null-ls").setup(...)`
-      -- ensure_installed = { "prettier", "stylua" },
+      ensure_installed = { "prettier", "stylua", "black", "gofmt" },
     },
   },
 
