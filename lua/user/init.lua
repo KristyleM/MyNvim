@@ -138,7 +138,7 @@ local config = {
       -- "pyright"
     },
     formatting = {
-      format_on_save = true, -- enable or disable auto formatting on save
+      format_on_save = false, -- enable or disable auto formatting on save
       disabled = { -- disable formatting capabilities for the listed clients
         -- "sumneko_lua",
       },
@@ -261,11 +261,12 @@ local config = {
         null_ls.builtins.formatting.prettier,
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.gofmt,
+        null_ls.builtins.formatting.rustfmt,
       }
       return config -- return final config table
     end,
     treesitter = { -- overrides `require("treesitter").setup(...)`
-      ensure_installed = { "lua" },
+      ensure_installed = { "lua", "python", "go", "rust", "javascript", "html" },
     },
     -- use mason-lspconfig to configure LSP installations
     ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
