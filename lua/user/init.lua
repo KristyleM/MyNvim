@@ -197,6 +197,12 @@ local config = {
       ["<C-h>"] = { "5h", desc = "5h" },
       ["<C-l>"] = { "5l", desc = "5l" },
       ["\\"] = { '"+', desc = "+ register" },
+      ["x"] = { '"_x', desc = "not yank when call x" },
+      ["X"] = { '"_X', desc = "not yank when call x" },
+      ["d"] = { '"_d', desc = "not yank when call d" },
+      ["D"] = { '"_D', desc = "not yank when call D" },
+      ["c"] = { '"_c', desc = "not yank when call c" },
+      ["C"] = { '"_C', desc = "not yank when call C" },
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
@@ -210,6 +216,12 @@ local config = {
       ["<C-h>"] = { "5h", desc = "5h" },
       ["<C-l>"] = { "5l", desc = "5l" },
       ["\\"] = { '"+', desc = "+ register" },
+      ["x"] = { '"_x', desc = "not yank when call x" },
+      ["X"] = { '"_X', desc = "not yank when call x" },
+      ["d"] = { '"_d', desc = "not yank when call d" },
+      ["D"] = { '"_D', desc = "not yank when call D" },
+      ["c"] = { '"_c', desc = "not yank when call c" },
+      ["C"] = { '"_C', desc = "not yank when call C" },
     },
     i = {
       ["<C-j>"] = { "<ESC>ja", desc = "move j in insert mode" },
