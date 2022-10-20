@@ -204,7 +204,7 @@ local config = {
       ["gpd"] = { "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", desc = "Plugin goto-review go to definition" },
       ["gpt"] = { "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", desc = "Plugin goto-review go to type definition" },
       ["gpi"] = { "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", desc = "Plugin goto-review go to implementation" },
-      ["gP"] = { "<cmd>lua require('goto-preview').close_all_win()<CR>", desc = "Plugin goto-review close all window" },
+      ["gpc"] = { "<cmd>lua require('goto-preview').close_all_win()<CR>", desc = "Plugin goto-review close all window" },
       ["gpr"] = { "<cmd>lua require('goto-preview').goto_preview_references()<CR>", desc = "Plugin goto-review go to references" },
 
       -- quick save
@@ -255,7 +255,9 @@ local config = {
       },
       ["ggandor/leap.nvim"] = {
         event = "BufRead",
-        config = function() require("leap").add_default_mappings() end,
+        config = function()
+          require("leap").add_default_mappings()
+        end,
       },
       ["rmagatti/goto-preview"] = {
         event = "BufRead",
