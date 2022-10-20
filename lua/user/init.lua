@@ -201,6 +201,12 @@ local config = {
       ["D"] = { '"_D', desc = "not yank when call D" },
       ["c"] = { '"_c', desc = "not yank when call c" },
       ["C"] = { '"_C', desc = "not yank when call C" },
+      ["gpd"] = { "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", desc = "Plugin goto-review go to definition" },
+      ["gpt"] = { "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", desc = "Plugin goto-review go to type definition" },
+      ["gpi"] = { "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", desc = "Plugin goto-review go to implementation" },
+      ["gP"] = { "<cmd>lua require('goto-preview').close_all_win()<CR>", desc = "Plugin goto-review close all window" },
+      ["gpr"] = { "<cmd>lua require('goto-preview').goto_preview_references()<CR>", desc = "Plugin goto-review go to references" },
+
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
@@ -250,7 +256,13 @@ local config = {
       ["ggandor/leap.nvim"] = {
         event = "BufRead",
         config = function() require("leap").add_default_mappings() end,
-      }
+      },
+      ["rmagatti/goto-preview"] = {
+        event = "BufRead",
+        config = function ()
+            require('goto-preview').setup{}
+        end
+      },
       -- We also support a key value style plugin definition similar to NvChad:
       -- ["ray-x/lsp_signature.nvim"] = {
       --   event = "BufRead",
