@@ -251,6 +251,10 @@ local config = {
         event = "BufRead",
         config = function() require("nvim-surround").setup {} end,
       },
+      ["ggandor/leap.nvim"] = {
+        event = "BufRead",
+        config = function() require("leap").add_default_mappings() end,
+      }
       -- We also support a key value style plugin definition similar to NvChad:
       -- ["ray-x/lsp_signature.nvim"] = {
       --   event = "BufRead",
