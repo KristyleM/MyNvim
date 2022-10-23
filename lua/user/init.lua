@@ -9,7 +9,7 @@ local config = {
   -- Configure AstroNvim updates
   updater = {
     remote = "origin", -- remote to use
-    channel = "nightly", -- "stable" or "nightly"
+    channel = "stable", -- "stable" or "nightly"
     version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
     branch = "main", -- branch name (NIGHTLY ONLY)
     commit = nil, -- commit hash (NIGHTLY ONLY)
@@ -201,11 +201,26 @@ local config = {
       ["D"] = { '"_D', desc = "not yank when call D" },
       ["c"] = { '"_c', desc = "not yank when call c" },
       ["C"] = { '"_C', desc = "not yank when call C" },
-      ["gpd"] = { "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", desc = "Plugin goto-review go to definition" },
-      ["gpt"] = { "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", desc = "Plugin goto-review go to type definition" },
-      ["gpi"] = { "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", desc = "Plugin goto-review go to implementation" },
-      ["gpc"] = { "<cmd>lua require('goto-preview').close_all_win()<CR>", desc = "Plugin goto-review close all window" },
-      ["gpr"] = { "<cmd>lua require('goto-preview').goto_preview_references()<CR>", desc = "Plugin goto-review go to references" },
+      ["gpd"] = {
+        "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
+        desc = "Plugin goto-review go to definition",
+      },
+      ["gpt"] = {
+        "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
+        desc = "Plugin goto-review go to type definition",
+      },
+      ["gpi"] = {
+        "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",
+        desc = "Plugin goto-review go to implementation",
+      },
+      ["gpc"] = {
+        "<cmd>lua require('goto-preview').close_all_win()<CR>",
+        desc = "Plugin goto-review close all window",
+      },
+      ["gpr"] = {
+        "<cmd>lua require('goto-preview').goto_preview_references()<CR>",
+        desc = "Plugin goto-review go to references",
+      },
 
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
@@ -255,15 +270,11 @@ local config = {
       },
       ["ggandor/leap.nvim"] = {
         event = "BufRead",
-        config = function()
-          require("leap").add_default_mappings()
-        end,
+        config = function() require("leap").add_default_mappings() end,
       },
       ["rmagatti/goto-preview"] = {
         event = "BufRead",
-        config = function ()
-            require('goto-preview').setup{}
-        end
+        config = function() require("goto-preview").setup {} end,
       },
       -- We also support a key value style plugin definition similar to NvChad:
       -- ["ray-x/lsp_signature.nvim"] = {
@@ -296,11 +307,24 @@ local config = {
     },
     -- use mason-lspconfig to configure LSP installations
     ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
-      -- ensure_installed = { "sumneko_lua" },
+      ensure_installed = {
+        "sumneko_lua",
+        "gopls",
+        "graphql",
+        "html",
+        "jsonls",
+        "tsserver",
+        "marksman",
+        "pyright",
+        "rust_analyzer",
+        "sqlls",
+        "taplo",
+        "yamlls",
+      },
     },
     -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
     ["mason-null-ls"] = { -- overrides `require("mason-null-ls").setup(...)`
-      ensure_installed = { "prettier", "stylua", "black", "gofmt" },
+      ensure_installed = { "prettier", "stylua", "black", "gofmt", "yamlfmt"},
     },
   },
 
