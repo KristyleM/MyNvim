@@ -248,7 +248,7 @@ local config = {
       ["<C-h>"] = { "<ESC>ha", desc = "move h in insert mode" },
       ["<C-l>"] = { "<ESC>la", desc = "move l in insert mode" },
       ["<C-e>"] = { "<ESC>ea", desc = "move e in insert mode" },
-      ["<C-b>"] = { "<ESC>ba", desc = "move b in insert mode" },
+      ["<C-b>"] = { "<ESC>bi", desc = "move b in insert mode" },
     },
   },
 
