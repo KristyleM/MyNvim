@@ -239,12 +239,16 @@ local config = {
       ["D"] = { '"_D', desc = "not yank when call D" },
       ["c"] = { '"_c', desc = "not yank when call c" },
       ["C"] = { '"_C', desc = "not yank when call C" },
+      ["J"] = { ":move '>+1<CR>gv-gv", desc = "move line up" },
+      ["K"] = { ":move '>-2<CR>gv-gv", desc = "move line down" },
     },
     i = {
       ["<C-j>"] = { "<ESC>ja", desc = "move j in insert mode" },
       ["<C-k>"] = { "<ESC>ka", desc = "move k in insert mode" },
       ["<C-h>"] = { "<ESC>ha", desc = "move h in insert mode" },
       ["<C-l>"] = { "<ESC>la", desc = "move l in insert mode" },
+      ["<C-e>"] = { "<ESC>ea", desc = "move e in insert mode" },
+      ["<C-b>"] = { "<ESC>ba", desc = "move b in insert mode" },
     },
   },
 
