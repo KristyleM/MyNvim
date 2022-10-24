@@ -49,6 +49,10 @@ local config = {
       wrap = false, -- sets vim.opt.wrap
       clipboard = "", -- not connection to the system clipboard
       colorcolumn = "80",
+      foldmethod = "expr",
+      foldexpr = "nvim_treesitter#foldexpr()",
+      foldenable = false,
+      foldlevel = 99,
     },
     g = {
       mapleader = " ", -- sets vim.g.mapleader
@@ -392,4 +396,16 @@ local config = {
   end,
 }
 
+-- Copy from https://github.com/nvim-telescope/telescope.nvim/issues/559
+-- and I remove zM here to avoid folding whole file. 
+vim.api.nvim_create_autocmd('BufRead', {
+   callback = function()
+      vim.api.nvim_create_autocmd('BufWinEnter', {
+         once = true,
+         command = 'normal! zx'
+      })
+   end
+})
+
 return config
+
