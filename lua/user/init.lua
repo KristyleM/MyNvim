@@ -202,7 +202,7 @@ local config = {
       ["<C-l>"] = { "5l", desc = "5l" },
       ["\\"] = { '"+', desc = "+ register" },
       ["d"] = { '"_d', desc = "not yank when call d" },
-      ["D"] = { '"_D', desc = "not yank when call D" },
+      ["D"] = { "d", desc = "Use like d and yank data" },
       ["c"] = { '"_c', desc = "not yank when call c" },
       ["C"] = { '"_C', desc = "not yank when call C" },
       ["gpd"] = {
@@ -244,7 +244,7 @@ local config = {
       ["<C-l>"] = { "5l", desc = "5l" },
       ["\\"] = { '"+', desc = "+ register" },
       ["d"] = { '"_d', desc = "not yank when call d" },
-      ["D"] = { '"_D', desc = "not yank when call D" },
+      ["D"] = { "d", desc = "use like d and yank data" },
       ["c"] = { '"_c', desc = "not yank when call c" },
       ["C"] = { '"_C', desc = "not yank when call C" },
       ["J"] = { ":move '>+1<CR>gv-gv", desc = "move line up" },
