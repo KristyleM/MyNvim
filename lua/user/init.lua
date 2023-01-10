@@ -225,11 +225,6 @@ local config = {
         "<cmd>lua require('goto-preview').goto_preview_references()<CR>",
         desc = "Plugin goto-review go to references",
       },
-      ["<C-w>w"] = {
-        "<cmd>lua require('nvim-window').pick()<CR>",
-        desc = "Switch Window by indicated key.",
-      },
-
       -- quick save
       -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     },
@@ -284,32 +279,23 @@ local config = {
         event = "BufRead",
         config = function() require("leap").add_default_mappings() end,
       },
+      ["ggandor/flit.nvim"] = {
+        event = "BufRead",
+        config = function()
+        require('flit').setup {
+          keys = { f = 'f', F = 'F', t = 't', T = 'T' },
+          -- A string like "nv", "nvo", "o", etc.
+          labeled_modes = "v",
+          multiline = false,
+          -- Like `leap`s similar argument (call-specific overrides).
+          -- E.g.: opts = { equivalence_classes = {} }
+          opts = {}
+        }
+        end,
+      },
       ["rmagatti/goto-preview"] = {
         event = "BufRead",
         config = function() require("goto-preview").setup {} end,
-      },
-      ["https://gitlab.com/yorickpeterse/nvim-window"] = {
-        event = "BufRead",
-        config = function()
-          require("nvim-window").setup {
-            -- The characters available for hinting windows.
-            chars = {
-              "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
-              "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
-            },
-
-            -- A group to use for overwriting the Normal highlight group in the floating
-            -- window. This can be used to change the background color.
-            normal_hl = "Normal",
-
-            -- The highlight group to apply to the line that contains the hint characters.
-            -- This is used to make them stand out more.
-            hint_hl = "Bold",
-
-            -- The border style to use for the floating window.
-            border = "single",
-          }
-        end,
       },
       ["simrat39/rust-tools.nvim"] = {
         event = "BufRead",
