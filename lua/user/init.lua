@@ -277,7 +277,10 @@ local config = {
       },
       ["ggandor/leap.nvim"] = {
         event = "BufRead",
-        config = function() require("leap").add_default_mappings() end,
+        config = function() 
+            require("leap").add_default_mappings()
+            require("leap").opts.highlight_unlabeled_phase_one_targets = false
+        end,
       },
       ["ggandor/flit.nvim"] = {
         event = "BufRead",
